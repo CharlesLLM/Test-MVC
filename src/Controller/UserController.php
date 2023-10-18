@@ -30,6 +30,14 @@ function login() {
     require_once('views/user/login.php');
 }
 
+function logout() {
+    if (isset($_SESSION['user'])) {
+        unset($_SESSION['user']);
+    }
+
+    header("Location: /test-mvc/user/login");
+}
+
 function register() {
     if (isset($_POST['submit'])) {
         if (!User::findUser($_POST['username'])) {
