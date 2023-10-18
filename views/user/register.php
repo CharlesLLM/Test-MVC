@@ -14,6 +14,13 @@
                     <div class="w-72">
                         <h1 class="text-2xl font-semibold">Formulaire d'inscription</h1>
                     </div>
+                    <?php if (isset($error)) { ?>
+                        <div role="alert">
+                            <div class="border border-l-4 border-red-400 rounded bg-red-100 px-4 py-3 mt-4 text-red-700">
+                                <p><?= $error ?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
                     <div class="divide-y divide-gray-200">
                         <form action="" method="post" class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                             <div class="relative">

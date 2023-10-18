@@ -3,7 +3,12 @@
 require_once('src/Entity/Movie.php');
 
 function index() {
+    require_once('src/Entity/User.php');
     $movies = Movie::findMovies();
+    
+    if (isset($_SESSION['user'])) {
+        $message = "Connecté en tant que".$_SESSION['user'];
+    }
 
     require_once('views/movie/index.php');
 }
@@ -45,7 +50,7 @@ function create() {
         header("Location: /test-mvc/movie/view/{$movie->getId()}");
     }
 
-    require_once('views/movie/new.html');
+    require_once('views/movie/new.php');
 }
 
 function delete(int $id) {

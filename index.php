@@ -1,6 +1,7 @@
 <?php
 
 require_once('src/connection.php');
+session_start();
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
     $params = explode('/', $_GET['action']);
@@ -27,10 +28,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
         }
     }
 } else {
-    require_once('src/Controller/HomeController.php');
-    home();
-}
-
-if (isset($_SESSION['user'])) {
-    echo "Connecté en tant que".$_SESSION['user']->getUsername();
+    require_once('src/Controller/UserController.php');
+    login();
 }

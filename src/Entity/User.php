@@ -51,7 +51,7 @@ final class User
 
             $statement = $db->prepare('SELECT * FROM users');            
             $statement->execute();
-            $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $users = $statement->fetchAll(PDO::FETCH_CLASS, 'User');
 
             return $users;
         } catch (PDOException $e) {
@@ -67,7 +67,7 @@ final class User
             $statement = $db->prepare('SELECT * FROM users WHERE username = :username');            
             $statement->bindValue(':username', $username, PDO::PARAM_STR);
             $statement->execute();
-            $user = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $user = $statement->fetchObject('User');
 
             return $user;
         } catch (PDOException $e) {
