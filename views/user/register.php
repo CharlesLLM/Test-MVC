@@ -33,7 +33,7 @@
                                 <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Mot de passe</label>
                             </div>
                             <div class="relative">
-                                <button class="bg-purple-500 text-white rounded-md px-2 py-1" type="submit" name="submit">S'inscrire</button>
+                                <button class="bg-purple-500 hover:bg-purple-600 text-white rounded-md px-4 py-2" type="submit" name="submit">S'inscrire</button>
                             </div>
                         </form>
                     </div>
