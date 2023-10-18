@@ -30,3 +30,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     require_once('src/Controller/HomeController.php');
     home();
 }
+
+if (isset($_SESSION['user'])) {
+    echo "Connecté en tant que".$_SESSION['user']->getUsername();
+}

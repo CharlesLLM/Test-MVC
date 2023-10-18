@@ -16,9 +16,8 @@ function login() {
         $user = User::findUser($username);
         if ($user && password_verify($password, $user->getPassword())) {
             session_start();
-            $_SESSION['id'] = $user->getId();
-            $_SESSION['username'] = $username;
-            header("Location: ");
+            $_SESSION['user'] = $user;
+            header("Location: /test-mvc/movie/index");
         } else {
             $error = "Identifiants incorrects.";
         }
