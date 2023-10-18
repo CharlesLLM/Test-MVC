@@ -41,7 +41,11 @@ function logout() {
 function register() {
     if (isset($_POST['submit'])) {
         if (!User::findUser($_POST['username'])) {
-            User::register($_POST['username'], $_POST['password']);
+            if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W)(?!.*' . preg_quote($_POST['username'], '/') . ').{8,}$/', $_POST['password'])) {
+                User::register($_POST['username'], $_POST['password']);
+            } else {
+                $error = "Veuillez entrer un mot de passe valide.";
+            }
         } else {
             $error = "Un compte existe déjà avec cet identifiant.";
         }

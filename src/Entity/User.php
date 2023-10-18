@@ -59,7 +59,7 @@ final class User
         }
     }
     
-    public static function findUser(string $username): self
+    public static function findUser(string $username): self|null
     {
         try {
             $db = connection();
@@ -67,9 +67,11 @@ final class User
             $statement = $db->prepare('SELECT * FROM users WHERE username = :username');            
             $statement->bindValue(':username', $username, PDO::PARAM_STR);
             $statement->execute();
-            $user = $statement->fetchObject('User');
+            if ($statement->fetchObject('User') !== false) {
+                $user = $statement->fetchObject('User');
+            }
 
-            return $user;
+            return isset($user) ? $user : null;
         } catch (PDOException $e) {
             die($e->getMessage());
         }
