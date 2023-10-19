@@ -17,6 +17,7 @@ function view(string $id) {
     if (is_numeric($id)) {
         if (Movie::findMovie(intval($id))) {
             $movie = Movie::findMovie(intval($id));
+            $movies = Movie::findMovies();
             require_once('views/movie/view.php');
             
             if (isset($_POST['submit'])) {

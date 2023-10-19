@@ -38,7 +38,7 @@
                         </form>
                     </div>
                     <div class="mb-3">
-                        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Le mot de passe doit contenir:</h2>
+                        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Le mot de passe doit contenir :</h2>
                         <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
                             <li class="flex items-center">
                                 <svg class="w-3.5 h-3.5 mr-2 text-gray-500 dark:text-gray-400 flex-shrink-0" id="characters-number-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
