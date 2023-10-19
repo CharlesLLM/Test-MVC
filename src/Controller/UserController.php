@@ -39,6 +39,10 @@ function logout() {
 }
 
 function register() {
+    if (isset($_SESSION['user'])) {
+        header("Location: /test-mvc/movie/index");
+    }
+    
     if (isset($_POST['submit'])) {
         if (!User::findUser($_POST['username'])) {
             if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W)(?!.*' . preg_quote($_POST['username'], '/') . ').{8,}$/', $_POST['password'])) {
