@@ -44,10 +44,10 @@
                                 </div>
                                 <div class="flex justify-around">
                                     <div class="relative">
-                                        <button class="bg-blue-500 text-white rounded-md px-2 py-1" type="submit" name="submit">Modifier</button>
+                                        <button class="bg-blue-500 text-white rounded-md px-4 py-2" type="submit" name="submit">Modifier</button>
                                     </div>
                                     <div class="relative">
-                                        <a href="<?= "/test-mvc/movie/delete/".$movie->getId() ?>" class="bg-red-500 text-white rounded-md px-2 py-1">Supprimer</a>
+                                        <a href="<?= "/test-mvc/movie/delete/".$movie->getId() ?>" class="bg-red-500 text-white rounded-md px-4 py-2">Supprimer</a>
                                     </div>
                                 </div>
                             </form>
