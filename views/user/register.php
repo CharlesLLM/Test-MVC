@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/test-mvc/assets/password.js"></script>
+    <!-- <script src="/test-mvc/assets/password.js"></script> -->
     <title>Inscription</title>
 </head>
 <body>
@@ -72,6 +72,7 @@
                             </li>
                         </ul>
                     </div>
+                    <p>Déjà un compte ? <a href="/test-mvc/user/login" class="text-purple-500 underline">Se connecter</a></p>
                 </div>
             </div>
         </div>

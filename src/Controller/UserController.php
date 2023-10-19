@@ -43,6 +43,7 @@ function register() {
         if (!User::findUser($_POST['username'])) {
             if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W)(?!.*' . preg_quote($_POST['username'], '/') . ').{8,}$/', $_POST['password'])) {
                 User::register($_POST['username'], $_POST['password']);
+                header("Location: /test-mvc/user/login");
             } else {
                 $error = "Veuillez entrer un mot de passe valide.";
             }

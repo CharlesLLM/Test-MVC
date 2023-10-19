@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     <?php } ?>
-                    <div class="divide-y divide-gray-200">
+                    <div>
                         <form action="" method="post" class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                             <div class="relative">
                                 <input autocomplete="off" id="username" name="username" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Nom d'utilisateur" />
@@ -35,6 +35,7 @@
                                 <button class="bg-blue-500 text-white rounded-md px-4 py-2" type="submit" name="submit">Se connecter</button>
                             </div>
                         </form>
+                        <p>Pas de compte ? <a href="/test-mvc/user/register" class="text-blue-500 underline">En créer un</a></p>
                     </div>
                 </div>
             </div>
