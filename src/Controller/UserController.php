@@ -54,3 +54,9 @@ function register() {
 
     require_once('views/user/register.php');
 }
+
+function account() {
+    $user = User::findUser($_SESSION['user']);
+
+    require_once('views/user/account.php');
+}

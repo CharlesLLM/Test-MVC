@@ -67,8 +67,9 @@ final class User
             $statement = $db->prepare('SELECT * FROM users WHERE username = :username');            
             $statement->bindValue(':username', $username, PDO::PARAM_STR);
             $statement->execute();
-            if ($statement->fetchObject('User') !== false) {
-                $user = $statement->fetchObject('User');
+            $user = $statement->fetchObject('User');
+            if ($user === false) {
+                $user = null;
             }
 
             return isset($user) ? $user : null;

@@ -3,6 +3,11 @@
 require_once('src/connection.php');
 session_start();
 
+if (!isset($_SESSION['user']) && $_SERVER['REQUEST_URI'] !== '/test-mvc/user/login') {
+    header("Location: /test-mvc/user/login");
+}
+require_once('views/navbar.php');
+
 if (isset($_GET['action']) && !empty($_GET['action'])) {
     $params = explode('/', $_GET['action']);
 
