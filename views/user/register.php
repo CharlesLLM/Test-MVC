@@ -94,7 +94,7 @@
         const regexUppercase = /[A-Z]/;
         const regexLowercase = /[a-z]/;
         const regexDigit = /[0-9]/;
-        const regexSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
+        const regexSpecialChar = /[!@#$%^&*\/()_+{}\[\]:;<>,.?~\\-]/;
         const lengthSVG = document.getElementById('characters-number-svg');
         const uppercaseSVG = document.getElementById('uppercase-svg');
         const lowercaseSVG = document.getElementById('lowercase-svg');
