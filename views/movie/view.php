@@ -70,7 +70,7 @@
             </form>
         </section>
         <div class="w-full lg:w-4/5 lg:ml-auto text-base md:text-sm text-gray-600 p-4">
-            <span class="text-base text-blue-600 font-bold">&lt;</span> <a href="/test-mvc/movie/index" class="text-base md:text-sm text-blue-600 font-bold no-underline hover:underline">Retour</a>
+            <a href="/test-mvc/movie/index" class="text-base md:text-sm text-blue-600 font-bold no-underline hover:underline"><span class="text-base text-blue-600 font-bold">&lt;</span> Retour</a>
         </div>
     </div>
 </body>
