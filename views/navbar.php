@@ -14,7 +14,7 @@
                 <?php } ?>
             </ul>
         </div>
-        <ul class="flex flex-row font-medium rounded-lg bg-white dark:bg-gray-900 dark:border-gray-700">
+        <ul class="flex flex-row font-medium rounded-lg bg-white dark:bg-gray-900 dark:border-gray-700 items-center">
             <?php if (isset($_SESSION['user'])) { ?>
                 <li class="p-3 mr-4 underline">
                     <a href="/test-mvc/user/logout">Se déconnecter</a>
