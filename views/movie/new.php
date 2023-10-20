@@ -39,9 +39,10 @@
                 <input class="border-2" type="number" name="release-year" id="release-year">
             </div>
             <div class="relative">
-                <button class="bg-blue-500 text-white rounded-md px-2 py-1" type="submit" name="submit">Ajouter</button>
+                <button class="shadow bg-blue-700 focus:shadow-outline focus:outline-none text-white py-2 px-4 rounded mr-4" type="submit" name="submit">Ajouter</button>
             </div>
         </form>
+        <a href="/test-mvc/movie/index" class="text-base md:text-sm text-blue-600 font-bold no-underline hover:underline"><span class="text-base text-blue-600 font-bold">&lt;</span> Retour</a>
     </div>
 </body>
 </html>

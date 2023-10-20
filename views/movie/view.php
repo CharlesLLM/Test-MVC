@@ -9,7 +9,7 @@
 <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
     <div class="container w-full flex flex-wrap mx-auto px-2 lg:pt-4 mt-8">
         <div class="w-full lg:w-1/5 px-6 text-xl text-gray-800 leading-normal">
-            <p class="text-base font-bold py-2 lg:pb-6 text-gray-700">Menu</p>
+            <p class="text-base font-bold py-2 lg:pb-6 text-gray-700">Films (<?= $_SESSION['user'] ?>)</p>
             <div class="block lg:hidden sticky inset-0">
                 <button id="menu-toggle" class="flex w-full justify-end px-3 py-3 bg-white lg:bg-transparent border rounded border-gray-600 hover:border-blue-600 appearance-none focus:outline-none">
                     <svg class="fill-current h-3 float-right" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
             <div class="w-full sticky inset-0 hidden max-h-64 lg:h-auto overflow-x-hidden overflow-y-auto lg:overflow-y-hidden lg:block mt-0 my-2 lg:my-0 border border-gray-400 lg:border-transparent bg-white shadow lg:shadow-none lg:bg-transparent z-20">
                 <ul class="list-reset py-2 md:py-0">
                     <?php foreach ($movies as $item) { ?>
-                        <li class="py-1 md:my-2 hover:bg-blue-100 lg:hover:bg-transparent border-l-4 border-transparent font-bold <?= $item->getTitle()===$movie->getTitle() ? 'border-l-blue-600' : '' ?> ">
+                        <li class="py-1 md:my-2 hover:bg-blue-100 lg:hover:bg-transparent border-l-4 border-transparent font-bold <?= $item->getId()===$movie->getId() ? 'border-l-blue-600' : '' ?> ">
                             <a href='/test-mvc/movie/view/<?= $item->getId() ?>' class="block pl-4 align-middle text-gray-700 no-underline hover:text-blue-600">
                                 <span class="pb-1 md:pb-0 text-sm"><?= $item->getTitle() ?></span>
                             </a>
@@ -64,8 +64,8 @@
                     </div>
                 </div>
                 <div class="pt-8">
-                    <button class="shadow bg-blue-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mr-4" type="button">Sauvegarder</button>
-                    <button class="shadow bg-blue-100 focus:shadow-outline focus:outline-none text-gray-700 font-bold py-2 px-4 rounded mr-4" type="button">Supprimer</button>
+                    <button class="shadow bg-blue-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mr-4" type="submit" name="submit">Sauvegarder</button>
+                    <a class="shadow bg-blue-100 focus:shadow-outline focus:outline-none text-gray-700 font-bold py-2 px-4 rounded mr-4">Supprimer</a>
                 </div>
             </form>
         </section>

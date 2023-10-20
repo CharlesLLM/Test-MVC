@@ -1,9 +1,9 @@
 <?php
 
 require_once('src/Entity/Movie.php');
+require_once('src/Entity/User.php');
 
 function index() {
-    require_once('src/Entity/User.php');
     $movies = Movie::findMovies();
     
     if (isset($_SESSION['user'])) {
@@ -18,7 +18,6 @@ function view(string $id) {
         if (Movie::findMovie(intval($id))) {
             $movie = Movie::findMovie(intval($id));
             $movies = Movie::findMovies();
-            require_once('views/movie/view.php');
             
             if (isset($_POST['submit'])) {
                 $movie->setTitle($_POST['title'])
@@ -27,10 +26,13 @@ function view(string $id) {
                     ->setGender($_POST['gender'])
                     ->setScenarist($_POST['scenarist'])
                     ->setProductionSociety($_POST['production-society'])
-                    ->setReleaseYear($_POST['release-year']);
+                    ->setReleaseYear($_POST['release-year'])
+                    ->setUserId(User::findUser($_SESSION['user'])->getId());
                 Movie::update($movie);
                 header("Location: /test-mvc/movie/view/{$id}");
             }
+
+            require_once('views/movie/view.php');
         } else {
             header('Location: /test-mvc/movie/index');
         }
@@ -46,7 +48,8 @@ function create() {
             ->setGender($_POST['gender'])
             ->setScenarist($_POST['scenarist'])
             ->setProductionSociety($_POST['production-society'])
-            ->setReleaseYear($_POST['release-year']);
+            ->setReleaseYear($_POST['release-year'])
+            ->setUserId(User::findUser($_SESSION['user'])->getId());
         $movie = Movie::add($movie);
         header("Location: /test-mvc/movie/view/{$movie->getId()}");
     }

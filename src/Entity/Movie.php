@@ -12,6 +12,7 @@ final class Movie
     private string $scenarist;
     private string $productionSociety;
     private int $releaseYear;
+    private int $userId;
 
     public function __construct()
     {
@@ -99,6 +100,17 @@ final class Movie
         return $this;
     }
 
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+    public function setUserId(int $userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
     public function __toString(): string
     {
         return $this->title;
@@ -110,7 +122,8 @@ final class Movie
             require_once('src/connection.php');
             $db = connection();
 
-            $statement = $db->prepare('SELECT * FROM movies');            
+            $statement = $db->prepare('SELECT movie.* FROM movie, user WHERE user.id = movie.userId AND user.username = :username');            
+            $statement->bindValue(':username', $_SESSION['user'], PDO::PARAM_STR);
             $statement->execute();
             $movies = $statement->fetchAll(PDO::FETCH_CLASS, 'Movie');
 
@@ -120,18 +133,22 @@ final class Movie
         }
     }
 
-    public static function findMovie(int $id): self
+    public static function findMovie(int $id): self|null
     {
         try {
             require_once('src/connection.php');
             $db = connection();
 
-            $statement = $db->prepare('SELECT * FROM movies WHERE id = :id');            
+            $statement = $db->prepare('SELECT movie.* FROM movie, user WHERE movie.id = :id AND user.id = movie.userId AND user.username = :username');            
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->bindValue(':username', $_SESSION['user'], PDO::PARAM_STR);
             $statement->execute();
             $movie = $statement->fetchObject('Movie');
+            if ($movie === false) {
+                $movie = null;
+            }
 
-            return $movie;
+            return isset($movie) ? $movie : null;
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -142,7 +159,7 @@ final class Movie
         try {
             $db = connection();
 
-            $statement = $db->prepare('INSERT INTO movies (title, filmMaker, synopsis, gender, scenarist, productionSociety, releaseYear) VALUES (:title, :filmMaker, :synopsis, :gender, :scenarist, :productionSociety, :releaseYear)');
+            $statement = $db->prepare('INSERT INTO movie (title, filmMaker, synopsis, gender, scenarist, productionSociety, releaseYear, userId) VALUES (:title, :filmMaker, :synopsis, :gender, :scenarist, :productionSociety, :releaseYear, :userId)');
             $statement->bindValue(':title', $movie->getTitle(), PDO::PARAM_STR);
             $statement->bindValue(':filmMaker', $movie->getFilmMaker(), PDO::PARAM_STR);
             $statement->bindValue(':synopsis', $movie->getSynopsis(), PDO::PARAM_STR);
@@ -150,6 +167,7 @@ final class Movie
             $statement->bindValue(':scenarist', $movie->getScenarist(), PDO::PARAM_STR);
             $statement->bindValue(':productionSociety', $movie->getProductionSociety(), PDO::PARAM_STR);
             $statement->bindValue(':releaseYear', $movie->getReleaseYear(), PDO::PARAM_INT);
+            $statement->bindValue(':userId', $movie->getUserId(), PDO::PARAM_INT);
             $statement->execute();
             $movie->id = $db->lastInsertId();
 
@@ -159,12 +177,12 @@ final class Movie
         }
     }
 
-    public function update(self $movie): self
+    public static function update(self $movie): self
     {
         try {
             $db = connection();
 
-            $statement = $db->prepare('UPDATE movies SET title = :title, filmMaker = :filmMaker, synopsis = :synopsis, gender = :gender, scenarist = :scenarist, productionSociety = :productionSociety, releaseYear = :releaseYear WHERE id = :id');
+            $statement = $db->prepare('UPDATE movie SET title = :title, filmMaker = :filmMaker, synopsis = :synopsis, gender = :gender, scenarist = :scenarist, productionSociety = :productionSociety, releaseYear = :releaseYear WHERE id = :id');
             $statement->bindValue(':title', $movie->getTitle(), PDO::PARAM_STR);
             $statement->bindValue(':filmMaker', $movie->getFilmMaker(), PDO::PARAM_STR);
             $statement->bindValue(':synopsis', $movie->getSynopsis(), PDO::PARAM_STR);
@@ -186,7 +204,7 @@ final class Movie
         try {
             $db = connection();
 
-            $statement = $db->prepare('DELETE FROM movies WHERE id = :id');
+            $statement = $db->prepare('DELETE FROM movie WHERE id = :id');
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();
         } catch (PDOException $e) {

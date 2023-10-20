@@ -49,7 +49,7 @@ final class User
         try {
             $db = connection();
 
-            $statement = $db->prepare('SELECT * FROM users');            
+            $statement = $db->prepare('SELECT * FROM user');            
             $statement->execute();
             $users = $statement->fetchAll(PDO::FETCH_CLASS, 'User');
 
@@ -64,7 +64,7 @@ final class User
         try {
             $db = connection();
 
-            $statement = $db->prepare('SELECT * FROM users WHERE username = :username');            
+            $statement = $db->prepare('SELECT * FROM user WHERE username = :username');            
             $statement->bindValue(':username', $username, PDO::PARAM_STR);
             $statement->execute();
             $user = $statement->fetchObject('User');
@@ -83,7 +83,7 @@ final class User
         try {
             $db = connection();
 
-            $statement = $db->prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
+            $statement = $db->prepare('INSERT INTO user (username, password) VALUES (:username, :password)');
             
             $password = password_hash($password, PASSWORD_ARGON2I);
             $statement->bindValue(':username', $username, PDO::PARAM_STR);

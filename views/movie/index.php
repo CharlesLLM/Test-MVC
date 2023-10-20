@@ -10,7 +10,7 @@
         <div class="bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
             <div class="sm:flex sm:items-center px-2 py-4">
                 <div class="flex-grow">
-                    <h3 class="font-normal px-2 py-3 leading-tight">Films</h3>
+                    <h3 class="font-bold px-2 py-3 leading-tight">Films</h3>
                     <div class="w-full">
                         <?php foreach ($movies as $movie) { ?>
                             <div class="flex cursor-pointer my-1 hover:bg-blue-lightest rounded">
@@ -22,6 +22,9 @@
                                 </div>
                             </div>
                         <?php } ?>
+                        <div class="relative">
+                            <a href="/test-mvc/movie/create" class="mt-2 py-2 pl-3 pr-4 text-white bg-blue-700 rounded dark:text-blue-500">&plus; Nouveau film</a>
+                        </div>
                     </div>
                 </div>
             </div>
