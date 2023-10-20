@@ -34,7 +34,7 @@ function view(string $id) {
 
             require_once('views/movie/view.php');
         } else {
-            header('Location: /test-mvc/movie/index');
+            require_once('views/404.html');
         }
     }
 }
